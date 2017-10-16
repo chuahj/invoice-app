@@ -1,0 +1,20 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item active">Create Invoice</li>
+</ol>
+<h1 class="display-4">Create Invoice</h1>
+<form method="POST" action="/invoice/create">
+    <div class="form-group row">
+      <label for="customerName" class="col-sm-2 col-form-label">Customer Name</label>
+      <div class="col-sm-10">
+        <input type="text" name="customerName" class="form-control">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="modelName" class="col-sm-2 col-form-label">Phone Model</label>
+      <div class="col-sm-10">
+        <input type="text" name="modelName" class="form-control">
+      </div>
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary"/>
+  </form>
