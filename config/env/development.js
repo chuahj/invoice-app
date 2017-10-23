@@ -20,5 +20,5 @@ module.exports = {
   // models: {
   //   connection: 'someMongodbServer'
   // }
-
+  gstNo: '000487493632'
 };

@@ -38,8 +38,23 @@ module.exports = {
         return false;
     },
     edit: function(req, res){
-        res.view('edit');
+        Invoice.findOne({id:req.params.id}).exec(function(err, invoice){
+            if(err){
+                res.send(500, {error: 'Database Error'});
+            }
+            res.view('edit', {invoice : invoice})
+        });
+    },
+    details: function(req, res){
+        Invoice.findOne({id:req.params.id}).exec(function(err, invoice){
+            if(err){
+                res.send(500, {error: 'Database Error'});
+            }
+            var xx = InvoiceService.calculateTest("4");
+            res.view('details', {invoice : invoice})
+        });
     }
+    
     
 };
 
