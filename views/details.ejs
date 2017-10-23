@@ -1,0 +1,89 @@
+<ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active">Invoice Details</li>
+    </ol>
+    <div class="container">
+        <div class='row'>
+            <div class="col-sm-6">
+                <label for="gst">GST Register No:</label>
+                <label for="gstVal" style="color:blue">
+                    <%= sails.config.gstNo %>
+                </label>
+            </div>
+            <div class="col-sm-6" style="text-align:right">
+                <label for="invoiceNo">Invoice No.</label>
+                <label for="invoiceNoVal">
+                    <%= invoice.id %>
+                </label>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-sm-6">
+                <label for="companyName">EIGHT & EIGHT TELECOMMUNICATION</label>
+                <label for="companyNameVal">NO.13 JALAN SALLEH, 84000, Muar, Johor P: 06-9524999</label>
+            </div>
+            <div class="col-sm-6" style="text-align:right">
+                <label for="custName">Customer Name / Company Name</label>
+                </br>
+                <label for="custNameVal">#Customer Address</label>
+            </br>
+            <span>
+                <label for="invoiceDateLabel">Invoice Date</label>
+                <label for="invoiceDate"><%= invoice.createdAt %></label>
+            </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                    <label for="itemList">Item List</label>
+            </div>
+            <div class="col-sm-3">
+                    <label for="quantity">Quantity</label>
+                </div>
+                <div class="col-sm-3">
+                        <label for="unitPriceLabel">Unit Price (RM)</label>
+                    </div>
+                    <div class="col-sm-3">
+                            <label for="totalPriceLabel">Subtotal Price (RM)</label>
+                        </div>
+                    </div>
+       <% for(i=0;i<invoice.shoppingCart.length;i++){ %>
+
+       
+        <div class="row">
+                <div class="col-sm-3">
+                        <label for="itemListVal"><%= invoice.shoppingCart[i].itemName %></label>
+                </div>
+                <div class="col-sm-3">
+                        <label for="quantity"><%= invoice.shoppingCart[i].itemQuantity %></label>
+                    </div>
+                    <div class="col-sm-3">
+                            <label for="unitPriceLabel"><%= invoice.shoppingCart[i].unitPrice %></label>
+                        </div>
+                        <div class="col-sm-3">
+                                <label for="totalPriceLabel"><%= invoice.shoppingCart[i].unitPrice *  invoice.shoppingCart[i].itemQuantity %></label>
+                            </div>
+            </div>
+        <% } %>
+
+        <div class="row">
+            <div class="col-sm-9 text-right" >Total:</div>
+            <div class="col-sm-3" ><% var x = InvoiceService.calculateTotal(invoice.shoppingCart) %>
+            <%= x %></div>
+        </div>
+        <div class="row">
+                <div class="col-sm-9 text-right" >GST(6%):</div>
+                <div class="col-sm-3" ><%= InvoiceService.calculateGST(x) %></div>
+            </div>
+            <div class="row">
+                    <div class="col-sm-9 text-right" >Grand Total:</div>
+                    <div class="col-sm-3" ><%= invoice.xx %></div>
+                </div>
+            <div class="row">
+                    <div style="float:right" >
+                        <a href="/invoice/edit/<%= invoice.id %>" class="btn btn-primary">Edit</a>
+                        <form class="d-inline" action="/invoice/delete/<%= invoice.id %>" method="POST">
+                            <input type="submit" value="Delete" class="btn btn-danger"/>
+                            </form>
+                </div>
+    </div>
