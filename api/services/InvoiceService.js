@@ -15,11 +15,13 @@ var InvoiceService = {
         return gstVal;
     },
     calculateGrandTotal : function(gst, total){
-        return gst + total.toFixed(2);
+        var grandTotal = Number(gst) + Number(total);
+        console.log("GT "+ grandTotal);
+        return grandTotal.toFixed(2);
     },
     calculateTest: function(x){
-        var test = x + 1;
-        console.log(test);
+        var test = Number(x) + Number(1);
+        console.log("Test calculate test :" + test);
         return test;
     }
 

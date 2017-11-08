@@ -53,6 +53,17 @@ module.exports = {
             var xx = InvoiceService.calculateTest("4");
             res.view('details', {invoice : invoice})
         });
+    },
+    update: function(req, res){
+        var customerName = req.body.customerName;
+        var shoppingCart = req.body.shoppingCart;
+
+        Invoice.update({id:req.params.id}, {customerName: customerName, shoppingCart: shoppingCart}).exec(function(err){
+            if(err){
+                res.send(500, {error: "Database Error"});
+            }
+            res.redirect('/articles/list');
+        });
     }
     
     

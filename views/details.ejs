@@ -69,21 +69,23 @@
         <div class="row">
             <div class="col-sm-9 text-right" >Total:</div>
             <div class="col-sm-3" ><% var x = InvoiceService.calculateTotal(invoice.shoppingCart) %>
-            <%= x %></div>
+            <%= x %>
+            </div>
         </div>
         <div class="row">
-                <div class="col-sm-9 text-right" >GST(6%):</div>
-                <div class="col-sm-3" ><%= InvoiceService.calculateGST(x) %></div>
+            <div class="col-sm-9 text-right" >GST(6%):</div>
+            <div class="col-sm-3" ><%= InvoiceService.calculateGST(x) %></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9 text-right" >Grand Total:</div>
+                <div class="col-sm-3" ><%= InvoiceService.calculateGrandTotal(InvoiceService.calculateGST(x),x ) %></div>
+        </div>
+    </br>
+        <div class="row">
+            <div class="col-sm-12 text-right">
+                <a href="/invoice/edit/<%= invoice.id %>" class="btn btn-primary">Edit</a>
+                    <form class="d-inline" action="/invoice/delete/<%= invoice.id %>" method="POST">
+                        <input type="submit" value="Delete" class="btn btn-danger"/>
+                    </form>
             </div>
-            <div class="row">
-                    <div class="col-sm-9 text-right" >Grand Total:</div>
-                    <div class="col-sm-3" ><%= invoice.xx %></div>
-                </div>
-            <div class="row">
-                    <div style="float:right" >
-                        <a href="/invoice/edit/<%= invoice.id %>" class="btn btn-primary">Edit</a>
-                        <form class="d-inline" action="/invoice/delete/<%= invoice.id %>" method="POST">
-                            <input type="submit" value="Delete" class="btn btn-danger"/>
-                            </form>
-                </div>
-    </div>
+        </div>
