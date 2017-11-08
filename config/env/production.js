@@ -17,9 +17,9 @@ module.exports = {
    * environment (see config/connections.js and config/models.js )           *
    ***************************************************************************/
 
-  // models: {
-  //   connection: 'someMysqlServer'
-  // },
+   models: {
+    MONGODB_URI : 'mongodb://heroku_3kg2tpj3:e5ono7bpu84trqt19b9fki2rei@ds229835.mlab.com:29835/heroku_3kg2tpj3'
+   },
 
   /***************************************************************************
    * Set the port in the production environment to 80                        *
